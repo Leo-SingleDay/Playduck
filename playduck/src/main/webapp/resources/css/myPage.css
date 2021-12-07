@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+section {
+            position: relative;
+        }
+
+        body {
+            background: var(--black-color);
+        }
+
+        .Mypage_img {
+            width: 300px;
+            height: 300px;
+            border-radius: 30px;
+            margin-top: 5%;
+            margin-left: 20%;
+
+        }
+
+        .Mypage_table .Mypage_head {
+            font-size: 24px;
+            font-weight: 700;
+            padding: 12px;
+
+        }
+
+        .Mypage_table .Mypage_guide {
+            font-size: 17px;
+            font-weight: 700;
+
+        }
+
+        .Mypage_update_button {
+            width: 250px;
+            height: 40px;
+            text-align: center;
+            cursor: pointer;
+            padding: 5px;
+            background-color: none;
+            border: 3px solid gray;
+            border-radius: 10px;
+            background: var(--black-color);
+            color: white;
+        }
+
+        .Mypage_content td {
+            color: white;
+            font-size: 17px;
+            padding: 10px;
+
+        }
+
+        .Mypage_table {
+            margin: auto;
+            margin-top: 30px;
+            margin-right: 50px;
+
+        }
+
+        .profile {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .Mypage_line {
+            background-color: white;
+            height: 1px;
+            margin-top: 10%;
+        }
+
+        /* 아이콘 부분 CSS */
+        .Mypage_icons_table td {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+
+        }
+
+        .Mypage_icon_img {
+            width: 100px;
+        }
+
+        .Mypage_icons_table {
+            width: 1000px;
+            height: 200px;
+            margin-top: 5%;
+        }
+
+        .Mypage_icons_table td {
+            width: 330px;
+        }
+
+        .Mypage_line1 {
+            background-color: white;
+            height: 1px;
+            margin-top: 3%;
+        }
+
+        .main_topwindow {
+            margin-top: 30px;
+            overflow: hidden;
+            /*check out container's movement : command + / */
+            position: relative;
+            top: 20%;
+            left: 50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+            height: 300px;
+            width: 1000px;
+        }
+
+        .main_topcontainer,
+        .mypage_bookmarkContainer, .mypage_bookmarkContainer2 {
+            position: absolute;
+            height: 220px;
+            width: 3500px;
+            margin-left: 0;
+            padding-left: 0;
+            background: var(--black-color);
+        }
+
+        .left {
+            border: solid #fff;
+            border-width: 0 7px 7px 0;
+            display: inline-block;
+            position: absolute;
+            top: 120px;
+            z-index: 100;
+            padding: 20px;
+            margin-right: 10px;
+            left: 30px;
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+
+        .right {
+            border: solid #fff;
+            border-width: 0 7px 7px 0;
+            display: inline-block;
+            right: 30px;
+            position: absolute;
+            top: 120px;
+            z-index: 100;
+            padding: 20px;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+
+        .cell {
+            width: 150px;
+            height: 220px;
+            display: inline-block;
+            margin-right: 5px;
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .cell img {
+            width: 150px;
+            height: 220px;
+            margin-bottom: 5px;
+        }
+        .cellcu {
+            width: 400px;
+            height: 220px;
+            display: inline-block;
+            margin-right: 5px;
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .cellcu>img {
+            width: 400px;
+            height: 220px;
+            margin-bottom: 5px;
+        }
+
+        .main_topcontainer li,
+        .mypage_bookmarkContainer, .mypage_bookmarkContainer2 {
+            vertical-align: top;
+        }
+
+        .main_toprate {
+            font-family: NanumBarunGothic;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .main_topcontent {
+            position: relative;
+        }
+
+        .main_topicon {
+            position: absolute;
+            width: 15px;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .main_topinfo {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+        }
+
+        .main_contentTitle {
+            font-size: 14px;
+            font-weight: 400;
+        }

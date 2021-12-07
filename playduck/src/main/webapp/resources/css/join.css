@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+.join_title {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff6801;
+}
+.join_subTitle, .join_email {
+    color: var(--black-color);
+     font-size: 17px;
+    font-weight: 400;
+}
+
+.join_gender>label{
+	font-size: 14px;
+    font-weight: 300;
+     color: var(--black-color);
+}
+
+
+.join_table {
+    width: 440px;
+    margin-bottom: 20px;
+}
+
+.join_title {
+    height: 40px;
+    width: 140px;
+
+}
+
+.loginArea .orange {
+    color: white;
+    background-color: #ff6801;
+    width: 298px;
+    height: 38px;
+    display: block;
+    padding: 5px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+#join_email1 {
+    width: 134px;
+}
+
+#join_email2 {
+    width: 134px;
+}
+
+.join_table input {
+    width: 300px;
+    padding-left: 10px;
+}
+
+::placeholder {
+    color: gray;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 1;
+    /* Firefox */
+}
+
+.join_checkTitle {
+    text-align: center;
+    color: var(--black-color);
+        font-size: 17px;
+    font-weight: 400;
+}
+
+/* 검정색 전체 배경 */
+.modal_join{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    display: none;
+    max-height: 100%;
+    z-index: 10;
+}
+
+.modal_join {
+    max-height: 100%
+}
+
+/* 흰색 안쪽 배경 */
+.modal_joinDiv {
+    width: 1400px;
+    height: 950px;
+    background: white;
+    margin-top: 100px;
+    padding: 10px 20px 20px 20px;
+    overflow-y: initial !important;
+    overflow-y: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+
+}
+
+.modal_content {
+    margin-top: 6%;
+}
+
+.modal_content_close {
+    float: right;
+    cursor: pointer;
+    margin-right: 15px;
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: var(--black-color);
+}
+
+.joinArea input {
+    border: 1px solid var(--black-color);
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.join_birth input{
+	width: 94px;
+}
+
+
+/* 관심사 체크 영역 */
+.check_table {
+	margin-top:30px;
+    text-align: center;
+    font-size: 14px;
+    width: 480px;
+    height: 80px;
+ 
+
+}
+
+.join_checkArea {
+    width: 120px;
+}
+.join_checkArea>label{
+	color:var(--black-color);
+}
+.check-box {
+    margin-left: 10px;
+}
+
+#int {
+    color: #b7b7b7;
+}
+
+
+/* 하단 버튼 */
+
+.j_birth {
+    width: 97px;
+}
+
+#m_email {
+    width: 137px;
+}
+
+.join_submitBtn{
+    width: 400px;
+    height: 50px;
+    background-color: var(--main-color);
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+	display:flex;
+	line-height:50px;
+	justify-content: center;
+}
+.joinArea input:invalid{
+	
+    border : 1px solid red;
+}

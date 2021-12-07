@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.pagination{
+	text-align: center;
+}
+.pagination, .page-item{
+	display:inline-block;
+}
+
+.page-item{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.page-link{
+	margin: 0;
+}
+
+.pageBar{
+	display: flex;
+	text-align: center;
+}
+
+.pagination{
+	display: block;
+	margin-top:50px;
+}
+
+.page-link{
+	font-size:14px;
+}
+
+.page-link:active, .page-link:hover {text-decoration:none; color:var(--red-color); }

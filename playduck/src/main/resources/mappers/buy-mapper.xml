@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buy-mapper">
+
+
+<select id="selectBuyList" resultType="buy" parameterType="Member" >
+select O.O_NO,O.O_QUAN,O.O_DATE,O.O_STATUS, MD.D_TITLE, MD.D_PRICE,MD.D_PIC, ((D_PRICE - W_DOWN)*O.O_QUAN+2500)TOTAL ,R.W_DOWN from orders O
+join reward R ON(O.W_NO = R.W_NO)
+JOIN MD ON(MD.D_NO = O.D_NO)
+WHERE O.M_NO = #{m_no}
+</select>
+
+<select id="selectTotalContents" resultType="_int">
+SELECT COUNT(*) FROM ORDERS
+</select>
+
+<update id="buyCancel" parameterType="_int">
+	 UPDATE ORDERS SET O_STATUS = 2 WHERE O_NO = #{O_NO}
+</update>
+
+<update id="buyReturn" parameterType="_int">
+	 UPDATE ORDERS SET O_STATUS = 3 WHERE O_NO = #{O_NO}
+</update>
+</mapper>
+

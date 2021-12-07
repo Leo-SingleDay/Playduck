@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<resultMap type="Member" id="resultMember">
+		<result property="m_genre" column="m_genre" typeHandler="MyTypeHandler" />
+	</resultMap>
+	
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO MEMBER VALUES (
+			SEQ_M_NO.NEXTVAL, #{m_name}, #{m_id},
+			#{m_pwd}, #{m_gender}, #{m_date}, #{m_phone},
+			#{m_email}, #{m_address},
+			#{m_status}, SYSDATE, #{m_pic}, #{ m_genre, typeHandler=MyTypeHandler }, DEFAULT
+		)
+	</insert>
+	
+	<update id="signUpConfirm" parameterType="map">
+		UPDATE MEMBER SET M_STATUS = 1
+		WHERE M_EMAIL = #{m_email}
+		AND M_STATUS = #{m_status}
+	</update>
+	
+	<select id="selectOneMember" parameterType="string" resultMap="resultMember">
+		SELECT * FROM MEMBER
+		WHERE M_ID = #{m_id}
+	</select>
+	
+	<select id="selectMember" parameterType="string" resultType="Member">
+		SELECT * FROM MEMBER
+		WHERE M_EMAIL = #{m_email}
+	</select>
+	
+	<update id = "pwdUpdate" parameterType="Member">
+	UPDATE MEMBER SET M_PWD = #{m_pwd}
+	WHERE M_EMAIL = #{m_email}
+	</update>
+	
+	<update id="insertPfImg" parameterType="Member">
+		UPDATE MEMBER SET M_PIC = #{ m_pic }, M_PICRENAMED = #{ m_picRenamed }
+		WHERE M_NO = #{ m_no }
+	</update>
+	
+	<select id="countReward" resultType="_int" parameterType="Member">
+		SELECT COUNT(*)
+		FROM REWARD
+		WHERE M_NO = #{m_no}
+	
+	</select>
+	
+	<select id="selectReward" resultType="_int" parameterType="Member">
+
+		SELECT SUM(NVL(W_UP,0))-SUM(NVL(W_DOWN, 0))
+		FROM REWARD
+		WHERE M_NO = #{m_no}
+
+	</select>
+
+	<select id="selectRank" resultType="_int" parameterType="Member">
+		SELECT SUM(NVL(W_UP,0))
+		FROM REWARD
+		WHERE M_NO = #{m_no}
+	</select>
+	
+	<select id="bookmarkPlay" resultType="Bookmark" parameterType="_int">
+		SELECT P_LIST, C_LIST
+		FROM BOOKMARK
+		JOIN MEMBER USING(M_NO)
+		WHERE M_NO = #{m_no}
+	</select>
+	
+	<select id="bookmarkCuration" resultType="curation" parameterType="_int">
+		SELECT C_TITLE, C_PIC, C_NO, C_PICRENAMED
+		FROM BOOKMARK
+		JOIN CURATION ON CURATION.C_NO = BOOKMARK.C_LIST
+		WHERE BOOKMARK.M_NO = #{m_no}
+	</select>
+	
+	<delete id="deletePlay" parameterType="string">
+		DELETE FROM BOOKMARK WHERE P_LIST = #{ no }
+	</delete>
+	
+	<delete id="deleteCuration" parameterType="_int">
+		DELETE FROM BOOKMARK WHERE C_LIST = #{ no }
+	</delete>
+	
+	<select id="selectId" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE M_EMAIL = #{m_email}
+	</select>
+	
+	<update id="updateMember" parameterType="Member" >
+		UPDATE MEMBER SET  M_GENDER = #{ m_gender }, M_DATE = #{ m_date }
+						  , M_PHONE = #{ m_phone }, M_ADDRESS = #{ m_address }
+						  , M_GENRE = #{ m_genre, typeHandler=MyTypeHandler }
+					  WHERE M_NO = #{ m_no } 
+	</update>
+	
+	<select id="checkIdDuplicate" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE M_ID = #{ m_id }
+	</select>
+</mapper>

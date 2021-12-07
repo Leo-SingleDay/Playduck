@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review-mapper">
+
+	<insert id="insertReview" parameterType="map">
+		insert into review values(seq_r_no.nextval, #{p_no}, #{m_no}, #{r_content}, 0, 0, #{r_status})
+	</insert>
+
+	<insert id="insertReview2" parameterType="map">
+		insert into playdetail values(seq_pd_no.nextval, #{p_no}, #{pd_theater}, #{pd_story}, #{pd_producing}, #{pd_casting})
+	</insert>
+	
+	<select id="selectCount" resultType="_int" parameterType="Member">
+		SELECT COUNT(R_NO)
+		FROM REVIEW
+		WHERE M_NO = #{ m_no }
+	</select>
+	
+	<select id="selectGood" resultType="hashmap" parameterType="review">
+	SELECT '1', R.*, M.* FROM REVIEW R
+JOIN MEMBER M ON(R.M_NO = M.M_NO)
+WHERE P_NO = #{p_no} AND R_STATUS = '1' and R.m_no = #{m_no}
+union
+SELECT '2', R.*, M.* FROM REVIEW R
+JOIN MEMBER M ON(R.M_NO = M.M_NO)
+WHERE P_NO = #{p_no} AND R_STATUS = '1' and R.m_no != #{m_no}
+	</select>
+	
+	<select id="selectBad" resultType="hashmap" parameterType="review">
+	SELECT '1', R.*, M.* FROM REVIEW R
+JOIN MEMBER M ON(R.M_NO = M.M_NO)
+WHERE P_NO = #{p_no} AND R_STATUS = '2' and R.m_no = #{m_no}
+union
+SELECT '2', R.*, M.* FROM REVIEW R
+JOIN MEMBER M ON(R.M_NO = M.M_NO)
+WHERE P_NO = #{p_no} AND R_STATUS = '2' and R.m_no != #{m_no}
+	</select>
+	
+	<delete id="deleteReview" parameterType="_int">
+  		delete from review where r_no = #{r_no}
+ 	</delete>
+
+	<select id="myReview" resultType="Review" parameterType="_int">
+		SELECT *
+		FROM (SELECT P_NO
+                    FROM
+                    REVIEW
+                    WHERE M_NO = #{m_no}
+                    ORDER BY R_NO DESC
+                    )
+		WHERE ROWNUM &lt;=20
+	</select>
+	
+	<select id="reviewDupl" resultType="_int" parameterType="hashmap">
+	SELECT COUNT(*) count FROM REVIEW 
+WHERE M_NO = #{m_no} AND P_NO = #{p_no}
+	</select>
+	
+	<insert id="likeInsert" parameterType="map">
+		insert into rlike values(seq_l_no.nextval, #{m_no}, #{r_no}, 1)
+	</insert>
+	
+	<update id="likeInsert2">
+	UPDATE REVIEW
+		SET R_GOOD = R_GOOD + 1
+		WHERE R_NO = #{ r_no } 
+	</update>
+	
+	<select id="likeCount" resultType="_int" parameterType="hashmap">
+	SELECT COUNT(*) count FROM RLIKE 
+WHERE M_NO = #{m_no} AND R_NO = #{r_no} AND RL_STATUS = 1
+	</select>
+	
+	<select id="selectLikecheck" resultType="_int" parameterType="hashmap">
+	SELECT RL_STATUS FROM RLIKE
+	WHERE M_NO = #{m_no} AND R_NO = #{r_no}
+	</select>
+	
+		<delete id="likeDelete">
+  		delete from rlike where r_no = #{r_no} and m_no = #{m_no}
+ 	</delete>
+	
+		<update id="likeDelete2">
+	UPDATE REVIEW
+		SET R_GOOD = R_GOOD - 1
+		WHERE R_NO = #{ r_no } 
+	</update>
+	
+		<insert id="HateInsert" parameterType="map">
+		insert into rlike values(seq_l_no.nextval, #{m_no}, #{r_no}, 2)
+	</insert>
+	
+	<update id="HateInsert2">
+	UPDATE REVIEW
+		SET R_BAD = R_BAD + 1
+		WHERE R_NO = #{ r_no } 
+	</update>
+	
+		<select id="HateCount" resultType="_int" parameterType="hashmap">
+	SELECT COUNT(*) count FROM RLIKE 
+WHERE M_NO = #{m_no} AND R_NO = #{r_no} AND RL_STATUS = 2
+	</select>
+	
+	
+	<delete id="HateDelete">
+  		delete from rlike where r_no = #{r_no} and m_no = #{m_no}
+ 	</delete>
+	
+		<update id="HateDelete2">
+	UPDATE REVIEW
+		SET R_BAD = R_BAD - 1
+		WHERE R_NO = #{ r_no } 
+	</update>
+	
+		<select id="detailBookmarkCheck" resultType="_int" parameterType="hashmap">
+	SELECT COUNT(*) count FROM BOOKMARK
+	WHERE M_NO = #{m_no} AND P_LIST = #{r_no}
+	</select>
+	
+		<insert id="insertReward" parameterType="_int">
+		insert into reward values(seq_w_no.nextval, #{m_no}, 5, null, sysdate)
+	</insert>
+	
+		<update id="insertPGood">
+	UPDATE PLAY
+		SET P_GOOD = P_GOOD + 1
+		WHERE P_NO = #{ p_no } 
+	</update>
+	
+	<update id="insertPBad">
+	UPDATE PLAY
+		SET P_BAD = P_BAD + 1
+		WHERE P_NO = #{ p_no } 
+	</update>
+</mapper>

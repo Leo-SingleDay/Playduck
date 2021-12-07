@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 마이바티스 DB 연결 시 설정할 내용을 작성 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.duck.playduck.main.model.vo.Main" alias="main" />
+		<typeAlias type="com.duck.playduck.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.duck.playduck.member.model.vo.MyTypeHandler" alias="MyTypeHandler" />
+		<typeAlias type="com.duck.playduck.review.model.vo.Review" alias="review" />
+		<typeAlias type="com.duck.playduck.review.model.vo.PlayDetail" alias="playDetail" />
+		<typeAlias type="com.duck.playduck.play.model.vo.Play" alias="play" />
+		<typeAlias type="com.duck.playduck.play.model.vo.PlayAll" alias="playall" />
+		<typeAlias type="com.duck.playduck.md.model.vo.Md" alias="md" />
+		<typeAlias type="com.duck.playduck.curation.model.vo.Curation" alias="curation" />
+		<typeAlias type="com.duck.playduck.orders.model.vo.BuyList" alias="buy" />
+		<typeAlias type="com.duck.playduck.play.model.vo.Bookmark" alias="bookmark" />
+		<typeAlias type="com.duck.playduck.md.model.vo.Basket" alias="basket" />
+		<typeAlias type="com.duck.playduck.admin.model.vo.Reward" alias="reward"/>
+		<typeAlias type="com.duck.playduck.orders.model.vo.Orders" alias="orders" />
+		<typeAlias type="com.duck.playduck.md.model.vo.mReward" alias="mreward" />
+		<typeAlias type="com.duck.playduck.md.model.vo.Stock" alias="stock" />
+		<typeAlias type="com.duck.playduck.md.model.vo.mOrder" alias="morder" />
+		<typeAlias type="com.duck.playduck.admin2.vo.OMD" alias="omd" />
+	</typeAliases>
+	
+
+	
+</configuration>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation-mapper">
+
+	<insert id="insertCuration" parameterType="curation">
+		insert into curation values(seq_c_no.nextval, #{ m_no }, #{ c_title }, #{ c_content }, sysdate, #{ c_pic }, #{ c_picrenamed })
+	</insert>
+<select id="selectCurationList" resultType="curation">
+SELECT * FROM CURATION ORDER BY C_NO DESC
+</select>
+<select id="selectTotalCuration" resultType="_int">
+SELECT COUNT(*) FROM CURATION ORDER BY C_NO
+</select>
+	<select id="selectCurationList1" resultType="curation">
+SELECT * FROM CURATION
+ORDER BY C_TITLE
+</select>
+<select id="selectCurationList2" resultType="curation">
+SELECT * FROM CURATION
+ORDER BY C_DATE DESC
+</select>
+
+<select id="selectBookList" resultType="bookmark" parameterType="bookmark">
+SELECT * FROM BOOKMARK
+WHERE M_NO = #{m_no}
+</select>
+
+<select id="curationSelectOne" resultType="curation" parameterType="curation">
+SELECT * FROM CURATION
+JOIN MEMBER USING(M_NO)
+WHERE C_NO = #{c_no}
+</select>
+
+
+<update id="curationUpdate" parameterType="curation">
+		UPDATE CURATION
+		SET C_TITLE = #{ c_title },
+		    C_CONTENT = #{ c_content },
+		    C_PICRENAMED = #{c_picrenamed}
+		WHERE C_NO = #{ c_no }
+	</update>
+	
+		<delete id="curationDelete" parameterType="_int">
+		DELETE FROM CURATION WHERE C_NO = #{ c_no }
+	</delete>
+	
+	<select id="selectSearchList" resultType="curation">
+	SELECT *   
+	FROM CURATION
+	WHERE C_TITLE LIKE '%' || #{ keyword } || '%'
+	ORDER BY  C_NO
+	</select>
+
+	<!-- MD MAIN 검색 부분 -->
+	<select id="selectTotalContents2" resultType="_int" parameterType="string">
+	SELECT COUNT(*) FROM CURATION
+	WHERE C_TITLE LIKE '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectC" resultType="_int">
+	SELECT 
+	        LAST_NUMBER 
+	FROM 
+	        USER_SEQUENCES 
+	WHERE 
+	        SEQUENCE_NAME = 'SEQ_C_NO'
+	</select>
+	
+</mapper>

@@ -1,0 +1,196 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+   }
+   
+   @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+   }
+   
+   @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+   }
+   
+   .nanumbarungothic * {
+    font-family: 'NanumBarunGothic', sans-serif;
+   }
+
+
+/* 기존 reset.css */
+* {
+    margin : 0 auto;
+    padding : 0;
+    box-sizing : border-box;
+    font-size : 12px;
+    font-family : 'NanumBarunGothic';
+}
+body{
+    background-color: var(--black-color);
+}
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, hr, button { 
+    font : inherit;
+    font-size : 100%;
+    font-weight : 300;
+    font-style : normal;
+    color : var(--white-color);
+    vertical-align : baseline;
+    text-align : justify;
+    text-decoration : none;
+    border : 0 none;
+    font-family : 'NanumBarunGothic';
+}
+
+input{
+	color:var(--black-color);
+	text-align: center;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer,
+header, hgroup, menu, nav, section {
+    display : block;
+}
+html{
+	position : relative;
+	min-height : 100%;
+}
+body {
+    line-height : 1;
+    min-height : 100%;
+}
+div{
+    line-height : 20px;
+}
+ol, ul {
+    list-style : none;
+}
+blockquote, q {
+    quotes : none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content : "";
+    content : none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* 이하 플레이덕 전용 reset.css */
+
+/* 색상표 */
+:root {
+    --main-color : #ff6801; /* 주황색 - 메인*/
+    --red-color : #ffd224; /*노란색*/
+    --black-color : #191919; /*블랙*/
+    --white-color : #fff; /*white*/
+}
+
+/* 기본 좌우 넓이 */
+section {
+    width : 1000px;
+    position : relative;
+    margin: auto;
+
+}
+
+
+/* 태그 숨김용 */
+.hidden{
+    display : none;
+}
+/* 기본 hr */
+.white_bar{
+    background-color : var(--white-color);
+    height : 1px;
+}
+/* 버튼 초기화 */
+.not_btn{
+	border : 0;
+	background : transparent;
+	cursor : pointer;
+}
+
+/*체크박스 버튼 변형*/
+input[type=checkbox]+label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+header .user_menu ul li button:hover {
+    color: var(--main-color);
+}
+
+input[type=checkbox]+label:before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 1.5px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 5px;
+    border: 1px solid #ff6801;
+    cursor: pointer;
+}
+
+/* 체크 박스 클릭 시 변환 */
+input[type=checkbox]:checked+label:before {
+    background: #ff6801;
+}
+
+/* 기존 체크 박스 보이지 않게 설정 */
+input[type=checkbox] {
+    display: none;
+}
+/*****************************************************/
+/*라디오버튼 변형*/
+input[type=radio]+label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type=radio]+label:before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 1.5px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 5px;
+    border: 1px solid #ff6801;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* 체크 박스 클릭 시 변환 */
+input[type=radio]:checked+label:before {
+    background: #ff6801;
+}
+
+/* 기존 체크 박스 보이지 않게 설정 */
+input[type=radio] {
+    display: none;
+}
+

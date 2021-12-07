@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+.modal_loginTitle {
+	font-size: 24px;
+	font-weight: 400;
+	text-align: center;
+	margin-bottom: 60px;
+	color: var(--main-color);
+}
+
+
+.loginArea .orange {
+	color: white;
+	background-color: var(--main-color);
+	width: 298px;
+	height: 38px;
+	display: block;
+	padding: 5px;
+	border: 1px solid;
+	cursor: pointer;
+}
+.login_findArea{
+	text-align: center;
+	display: block;
+}
+.login_find {
+	color: gray;
+	font-weight: 400;
+	cursor: pointer;
+	display: inline-block;
+	
+	
+
+}
+
+/* 검정색 전체 배경 */
+.modal_login {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	background: rgba(0, 0, 0, 0.7);
+	top: 0;
+	left: 0;
+	display: none;
+	max-height: 100%;
+		z-index:10;
+}
+
+div.modal {
+	max-height: 100%
+}
+
+/* 흰색 안쪽 배경 */
+.modal_loginDiv {
+	width: 1400px;
+	height: 700px;
+	background: white;
+	margin-top: 100px;
+	padding: 10px 20px 20px 20px;
+	overflow-y: initial !important;
+	overflow-y: auto;
+	transform: translateX( -50% );
+	border-radius: 30px;
+	left:50%;
+	position: fixed;
+
+}
+
+.modal_content {
+	margin-top: 8%;
+}
+
+.modal_content_close {
+	float: right;
+	cursor: pointer;
+	margin-right: 15px;
+	margin-top: 15px;
+	font-size: 24px;
+	font-weight: bolder;
+}
+
+.iconArea{
+	text-align:center;
+}
+
+.icon {
+	margin: 5px;
+	margin-top: 30px;
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.icon_content {
+	color: gray;
+	font-size:14px;
+	font-weight:300;
+	text-align:center;
+}
+
+#m_id,#m_pwd {
+	width: 298px;
+	height: 38px;
+	display: block;
+	padding: 5px;
+	border: 1px solid var(--black-color);
+	margin-bottom: 20px;
+}
+
+::placeholder {
+	text-align: center;
+}
+
+.login_box {
+	text-align: center;
+	margin-top: 20px;
+}

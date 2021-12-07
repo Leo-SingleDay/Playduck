@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin-mapper">
+
+	<select id="Memberadmin" resultType="member">
+		SELECT M_NO FROM MEMBER
+	</select>
+
+	<select id="selectmemberTotal" resultType="_int">
+	SELECT COUNT(*) FROM MEMBER
+	</select>
+	<select id="memberadminReward" parameterType="_int"
+		resultType="reward">
+		SELECT M.M_NO, M.M_NAME,M.m_status,(SELECT SUM(W_UP -NVL(W_DOWN, 0)) FROM REWARD
+		WHERE M_NO = #{m_no})POINT
+		FROM MEMBER M
+		WHERE M_NO = #{m_no}
+	</select>
+
+
+	<update id="memberadminDelete" parameterType="_int">
+		UPDATE MEMBER SET M_STATUS = 2
+		WHERE M_NO = #{m_no}
+	</update>
+
+	<select id="admincancel" resultType="buy">
+		select M.M_NAME,O.O_NO, O.O_QUAN,O.O_STATUS, MD.D_TITLE, MD.D_PRICE,MD.D_PIC
+		from orders O
+		JOIN MD ON(MD.D_NO = O.D_NO)
+		JOIN MEMBER M ON(M.M_NO=O.M_NO)
+		WHERE O.O_STATUS =2
+	</select>
+	
+	<select id="selectcancelTotal" resultType="_int">
+		select count(*)
+		from orders
+		WHERE O_STATUS =2
+	</select>
+	
+	
+	<select id="adminreturn" resultType="buy">
+
+		select M.M_NAME,O.O_NO,O.D_NO, O.O_QUAN,O.O_STATUS, MD.D_TITLE,
+		MD.D_PRICE,MD.D_PIC
+		from orders O
+		JOIN MD ON(MD.D_NO = O.D_NO)
+		JOIN MEMBER M ON(M.M_NO=O.M_NO)
+		WHERE O.O_STATUS =3
+
+	</select>
+	
+	<select id="selectreturnTotal" resultType="_int">
+	select count(*)
+		from orders
+		WHERE O_STATUS =3
+	</select>
+	
+	
+	
+	
+	<select id="membersr" resultType="member">
+		SELECT M_NAME, M_NO
+		FROM MEMBER
+		WHERE M_NAME LIKE '%' || #{text} || '%'
+		ORDER
+		BY M_NO
+	</select>
+	
+	<select id="selectmemberSrTotalContents" resultType="_int">
+	SELECT COUNT(*)
+		FROM MEMBER
+		WHERE M_NAME LIKE '%' || #{text} || '%'
+		ORDER
+		BY M_NO
+	</select>
+	
+	
+	
+	<select id="admincancelsr"  resultType="buy">
+		select M.M_NAME,O.O_NO, O.O_QUAN,O.O_STATUS, MD.D_TITLE, MD.D_PRICE,MD.D_PIC
+		from orders O
+		JOIN MD ON(MD.D_NO = O.D_NO)
+		JOIN MEMBER M ON(M.M_NO=O.M_NO)
+		WHERE O.O_STATUS =2 AND (M.M_NAME LIKE '%' || #{text} || '%' OR MD.D_TITLE
+		LIKE '%' || #{text} || '%')
+	</select>
+
+	<select id="selectcancelsrTotal" resultType="_int">
+	select count(*)
+		from orders O
+		JOIN MD ON(MD.D_NO = O.D_NO)
+		JOIN MEMBER M ON(M.M_NO=O.M_NO)
+		WHERE O_STATUS =2 AND (M.M_NAME LIKE '%' || #{text} || '%' OR MD.D_TITLE
+		LIKE '%' || #{text} || '%')
+	</select>
+
+
+
+	<select id="adminreturnsr"  resultType="buy">
+		select M.M_NAME,O.O_NO,O.D_NO, O.O_QUAN,O.O_STATUS, MD.D_TITLE,
+		MD.D_PRICE,MD.D_PIC
+		from orders O
+		JOIN MD ON(MD.D_NO = O.D_NO)
+		JOIN MEMBER M ON(M.M_NO=O.M_NO)
+		WHERE O.O_STATUS =3 AND (M.M_NAME LIKE '%' || #{text} || '%' OR MD.D_TITLE
+		LIKE '%' || #{text} || '%')
+	</select>
+
+<select id="selectreturnsrTotal" resultType="_int">
+select count(*)
+		from orders O
+		JOIN MD ON(MD.D_NO = O.D_NO)
+		JOIN MEMBER M ON(M.M_NO=O.M_NO)
+		WHERE O_STATUS =3 AND (M.M_NAME LIKE '%' || #{text} || '%' OR MD.D_TITLE
+		LIKE '%' || #{text} || '%')
+</select>
+
+	<update id="updatereturn" parameterType="_int">
+	UPDATE ORDERS SET O_STATUS =4
+	WHERE D_NO= #{d_no}
+	</update>
+</mapper>

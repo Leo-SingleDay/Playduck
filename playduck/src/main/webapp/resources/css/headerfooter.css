@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+/* header */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    position: relative;
+}
+
+.headerArea{
+	width:100%;
+	background-color: var(--black-color);
+	height: 100px;
+	margin-top:0px;
+	padding-top : 20px;
+}
+
+section {
+    position: relative;
+    min-height: 100%;
+
+}
+
+header {
+    width: 1000px;
+    display: flex;
+    margin-bottom: 30px;
+
+}
+
+.header_logo {
+    width: 244px;
+    height: 61px;
+}
+
+.header_search {
+    width: 37px;
+    height: 34px;
+    margin: auto 0;
+    float: left;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.header_searchArea {
+    width: 300px;
+    margin: 0;
+}
+
+.header_login{
+    margin: auto 0;
+    font-size: 17px;
+    font-weight: 400;
+       color : white;
+           width: 300px;
+           float:right;
+           text-align: right;
+}
+
+.header_login>a, .header_searchArea>a {
+    font-weight: 400;
+    cursor: pointer;
+    color : white;
+}
+
+.header_searchArea>a {
+	line-height: 60px;
+}
+
+/* footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--black-color);
+    font-size: 14px;
+}
+
+.footerArea {
+    width: 100%;
+    bottom: 0;
+    line-height: 36px;
+    text-align: center;
+    margin: 0;
+}
+
+.detail_footArea {
+    width: 100%;
+    height: 150px;
+}
+
+.topBtn{
+	width:35px;
+	height: 35px;
+	background-color: var(--main-color);
+	color: white;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	text-align: center;
+	line-height:35px;
+	font-size: 14px;
+	font-weight: 400;
+	border-radius: 35px;
+	cursor: pointer;
+	display: none;
+}
+
+input:focus {outline:none;}
+
+
+#m_id, #m_pwd{
+	margin: auto;	
+}
+
+.orange, .join_submitBtn{
+	margin: auto;
+}
+
+
+/* 검정색 전체 배경 */
+.modal_search{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    display: none;
+    max-height: 100%;
+    z-index: 10;
+}
+
+
+/* 흰색 안쪽 배경 */
+.modal_searchDiv {
+    width: 1000px;
+    height: 220px;
+    background: white;
+    margin-top: 100px;
+    padding: 10px 20px 20px 20px;
+    overflow-y: initial !important;
+    overflow-y: auto;
+    margin-left: 20%;
+    margin-right: auto;
+    border-radius: 30px;
+    position: fixed;
+    
+}
+
+.searchArea{
+	text-align: center;
+}
+.main_searchInput{
+	border: 1px solid var(--black-color);
+	width: 500px;
+	height: 45px;
+	margin: auto;
+		color : var(--black-color);
+}
+
+.main_search{
+		width: 100px;
+	height: 45px;
+	background-color: var(--main-color);
+	text-align: center;
+	font-size:21px;
+	font-weight: 700;
+}
+
+.join_table input{
+	height: 26px;
+}
+
+.validate{
+	color:black; 
+	margin:0px auto; 
+	text-align:center;
+	font-weight:bold;
+	display:none;
+}
+
+.valired{
+	color:red;
+}
+
+.valigreen{
+	color:green;
+}
+
+
+

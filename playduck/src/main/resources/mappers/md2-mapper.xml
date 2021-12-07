@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="md2-mapper">
+	
+	<select id="mdPlayList" parameterType="string" resultType="md">
+		SELECT D_NO, D_TITLE, D_PRICE, D_PIC 
+		FROM MD  
+		WHERE P_NO = #{p_no}
+	</select>
+	
+	<!-- Md 한 개 정보 가져오기 -->
+	<select id="selectOneMd"  parameterType="_int"  resultType="md">
+	SELECT  D_TITLE, D_PRICE, D_PIC, D_DETAIL,D_NO
+	FROM MD
+	WHERE D_NO = #{d_no}
+	</select>
+		
+	<!-- // reward 값 가져오기 -->
+	<select id="getReward" parameterType="_int"  resultType="_int">
+		SELECT SUM(W_UP)-SUM(NVL(W_DOWN, 0))
+		FROM REWARD
+		WHERE M_NO = #{m_no}
+	</select>
+	
+	<!-- 장바구니에 MD 담기 -->
+	<insert id="addBasket" parameterType="basket" >
+		INSERT INTO BASKET VALUES(
+		#{m_no}, #{d_no}, #{b_quan}, 1
+		)
+		</insert>
+		
+	<!--장바구니 리스트 불러오기  -->
+	<select id="getbasketList" parameterType="_int" resultType="md">
+		SELECT D_NO, D_TITLE, D_PRICE, D_PIC ,B_QUAN, B_STATUS
+		FROM MD
+		JOIN BASKET USING(D_NO)
+		WHERE D_NO IN(
+                SELECT D_NO FROM BASKET
+                WHERE M_NO =#{m_no}) 
+	</select>
+	
+		<!--  basket 숫자 업데이트 -->
+		<update id="updateBasket" parameterType="basket">
+			UPDATE BASKET SET B_QUAN = B_QUAN + #{b_quan}
+			WHERE M_NO = #{ m_no }
+				AND D_NO = #{ d_no}
+		</update>
+		
+		<!-- basket 한 개 정보 가져오기 -->
+		<select id="selectOneBasket"  parameterType="basket"  resultType="md">
+		SELECT *
+		FROM BASKET
+		WHERE D_NO = #{d_no}
+			AND M_NO = #{ m_no}
+		</select>
+		
+		<!--  장바구니에서 basket 숫자 업데이트 -->
+		<update id="update2Basket" parameterType="basket">
+			UPDATE BASKET SET B_QUAN = #{b_quan}
+			WHERE M_NO = #{ m_no }
+				AND D_NO = #{ d_no}
+		</update>
+		
+	<select id="selectTotalContents" resultType="_int">
+	SELECT COUNT(*) FROM MD
+	</select>
+
+	   <!--  // 장바구니 MD 선택하기 해제하기 status 변경 1 = 선택 / 2 = 해제  -->
+		<update id="update3Basket" parameterType="basket">
+			UPDATE BASKET SET B_STATUS = #{b_status}
+			WHERE M_NO = #{ m_no }
+				AND D_NO = #{ d_no}
+		</update>
+		
+		<!-- 사용할 리워드 값 저장하기 -->
+		<insert id="updateReward" parameterType="mreward" >
+				INSERT INTO REWARD VALUES(
+				SEQ_R_NO.NEXTVAL, #{m_no}, null , #{w_down}, DEFAULT
+				)
+		</insert>
+		
+		<!--basket 불러오기 (주문목록 저장용) -->
+		<select id="getbasketList2" parameterType="_int" resultType="basket">
+		 SELECT D_NO, B_QUAN
+		 FROM BASKET
+		 WHERE M_NO = #{m_no}
+	 		    AND B_STATUS = 1
+		</select>
+			
+		 <!-- Order 주문목록 저장하기	-->
+			<insert id="insertOrderList" parameterType="mOrder" >
+						INSERT INTO ORDERS VALUES(
+						SEQ_O_NO.NEXTVAL, #{m_no}, #{d_no}, #{o_quan}, SYSDATE, 1,
+						SEQ_R_NO.CURRVAL, #{o_name}, #{o_phone}, #{o_address}, #{o_memo}
+						)
+			</insert>
+			
+			<!-- 구매한 장바구니 삭제하기  -->
+			<delete id="deletebuyBasket" parameterType="_int">
+			DELETE FROM BASKET 
+			WHERE M_NO = #{m_no}
+				 AND B_STATUS=1
+			</delete>
+			
+			<!--  장바구니에서 삭제하기 --> 
+			<delete id="delBasket" parameterType="basket">
+				DELETE FROM BASKET
+				WHERE M_NO = #{m_no}
+					AND D_NO = ${d_no}
+			</delete>
+			
+			<!-- 재고 수량 다운하기   -->
+		<update id="downQuan" parameterType="mOrder">
+			UPDATE STOCK SET D_QUAN = D_QUAN - #{o_quan}
+			WHERE D_NO = #{ d_no}
+		</update>
+	
+
+	
+		<select id="selectBoardList" resultType="md">
+		SELECT *   
+		FROM MD 
+		ORDER BY  D_NO
+		</select>
+
+	<select id="selectMDList" resultType="md">
+	SELECT *   
+	FROM MD
+	ORDER BY D_NO
+	</select>
+	
+	<!-- MD MAIN 검색 부분 -->
+	<select id="selectTotalContents2" resultType="_int" parameterType="string">
+	SELECT COUNT(*) FROM MD
+	WHERE D_TITLE LIKE '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectSearchList" resultType="md">
+	SELECT *   
+	FROM MD
+	WHERE D_TITLE LIKE '%' || #{ keyword } || '%'
+	ORDER BY  D_NO
+	</select>
+
+	
+</mapper>

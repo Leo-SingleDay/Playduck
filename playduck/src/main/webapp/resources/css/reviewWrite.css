@@ -1,0 +1,110 @@
+@charset "UTF-8";
+.rw_title{
+    text-align: center;
+    margin-top: 70px;
+    font-size: 27px;
+    font-weight: 700;
+}
+.rw_posterArea{
+    display: flex;
+    justify-content: center;
+}
+.rw_poster{
+    width: 420px;
+    height: 590px;
+    margin-top: 30px;
+}
+
+.rw_reviewTab{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.rw_contentTitle{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+.rw_ratingArea{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.rw_ratingTitle{
+    width: 100px;
+    text-align: center;
+    height: 50px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+input[type=range]{
+    -webkit-appearance: none;
+    width: 430px;
+    height: 15px;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    margin-right: 10px;
+}
+#value1{
+    width: 50px;
+    color: white;
+    text-align: right;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background:var(--main-color);
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--red-color);
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+.rw_reviewArea{
+    width: 550px;
+    height: 130px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.rw_review{
+    border: 0;
+    height: 60px;
+}
+.rw_review:focus{
+   outline:none;
+}
+
+.rw_writeBtn{
+    width: 550px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 65px;
+    color: white;
+}

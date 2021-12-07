@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="play-mapper">
+
+<select id="selectPlayList" resultType="playall">
+SELECT PA.P_NO,PA.PRFNM,PA.POSTER,PA.PRFPDFROM,floor(P_GOOD/DECODE((P_GOOD + P_BAD),0,1,(P_GOOD + P_BAD))*100) p_rating, NVL((SELECT COUNT(R.P_NO) FROM REVIEW R WHERE R.P_NO = PA.P_NO GROUP BY P_NO), 0) P_COUNT
+FROM PLAYALL PA
+JOIN PLAY P ON(P.P_NO =PA.P_NO)
+</select>
+<select id="selectTotalContents" resultType="_int">
+SELECT COUNT(*) FROM PLAY
+</select>
+
+	<!-- 플레이디테일 평균점수 가져오기 -->
+	<select id="selectPD" parameterType="string" resultType="playDetail">
+		SELECT floor(AVG(PD_THEATER)) avg_pd_theater, floor(AVG(PD_STORY)) avg_pd_story, floor(AVG(PD_PRODUCING)) avg_pd_producing, floor(AVG(PD_CASTING)) avg_pd_casting
+FROM PLAYDETAIL
+WHERE P_NO = #{p_no}
+	</select>
+	
+	<!-- 플레이 평점 가져오기 -->
+	<select id="selectPlay"  parameterType="string"  resultType="play">
+	SELECT floor(P_GOOD/DECODE((P_GOOD + P_BAD),0,1,(P_GOOD + P_BAD))*100) p_rating
+FROM PLAY
+WHERE P_NO = #{p_no}
+	</select>
+
+<select id="playsr" parameterType="String" resultType="playall">
+
+SELECT PA.P_NO,PA.PRFNM,PA.POSTER,PA.PRFPDFROM,floor(P_GOOD/DECODE((P_GOOD + P_BAD),0,1,(P_GOOD + P_BAD))*100) p_rating, NVL((SELECT COUNT(R.P_NO) FROM REVIEW R WHERE R.P_NO = PA.P_NO GROUP BY P_NO), 0) P_COUNT
+FROM PLAYALL PA
+JOIN PLAY P ON(P.P_NO =PA.P_NO)
+		WHERE PRFNM LIKE '%' || #{text} || '%'
+</select>
+
+<select id="selectBlist" parameterType="_int" resultType="bookmark">
+	SELECT *
+		FROM BOOKMARK
+		where m_no = #{m_no}
+</select>
+
+<select id="playsrtotal" parameterType="String" resultType="_int">
+SELECT COUNT(*) FROM PLAYALL WHERE PRFNM LIKE '%' || #{text} || '%'
+</select>
+
+
+</mapper>

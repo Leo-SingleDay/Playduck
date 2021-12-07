@@ -1,0 +1,563 @@
+@charset "UTF-8";
+
+body, div, th, td, p {
+	color: var(--black-color);
+}
+
+input {
+	border: 1px solid var(--black-color);
+}
+
+html, body {
+	height: 100%
+}
+
+.AD_main_cancelList {
+	margin-top: 150px;
+}
+
+.AD_cancelList_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.AD_cancelList_search_img {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.AD_cancelList_search_img img {
+	height: 28px;
+	margin-bottom: -8px
+}
+
+.searchbox {
+	width: 400px;
+	height: 28px;
+	margin-bottom: 15px;
+	margin-right: 6px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_cancelList_table thead tr {
+	background-color: #969393;
+}
+
+.AD_cancelList_table {
+	font-size: 17px;
+	width: 1300px;
+	font-weight: 300;
+}
+
+.AD_cancelList_table thead tr th {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 2px solid var(--black-color);
+	border-bottom: 2px solid var(--black-color);
+	line-height: 40px;
+}
+
+.AD_cancelList_table tbody tr td {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+	height: 100px;
+	vertical-align: middle;
+}
+
+.AD_cancelList_table tbody tr td img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.AD_main_mdList {
+	margin-top: 150px;
+}
+
+.AD_mdList_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.AD_mdList_search_img {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.AD_mdList_search_img img {
+	height: 28px;
+	margin-bottom: -8px
+}
+
+.searchbox {
+	width: 400px;
+	height: 28px;
+	margin-bottom: 15px;
+	margin-right: 6px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_mdList_table thead tr {
+	background-color: #969393;
+}
+
+.AD_mdList_table {
+	font-size: 17px;
+	width: 1300px;
+	font-weight: 300;
+}
+
+.AD_mdList_table thead tr th {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 2px solid var(--black-color);
+	border-bottom: 2px solid var(--black-color);
+	line-height: 40px;
+}
+
+.AD_mdList_table tbody tr td {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+	height: 100px;
+	vertical-align: middle;
+}
+
+.AD_mdList_table tbody tr td img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.mdList_button, .salesList_button {
+	width: 72px;
+	height: 28px;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
+	background: grey;
+	border-radius: 5px;
+	font-family: 'NanumBarunGothic';
+	cursor: pointer;
+}
+
+.AD_main_productEn {
+	margin-top: 150px;
+	margin-left: 100px;
+	width: 100%;
+}
+
+.AD_productEn_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+	font-family: 'NanumBarunGothic';
+}
+
+.AD_productEn_img_info {
+	margin-top: 70px;
+}
+
+.AD_productEn_img {
+	display: inline-block;
+}
+
+.AD_productEn_img img {
+	width: 300px;
+	height: 300px;
+	cursor: pointer;
+}
+
+.AD_productEn_info {
+	display: inline-block;
+	margin-left: 70px;
+	margin-bottom: 30px;
+}
+
+.AD_productEn_info_table1 {
+	border-collapse: separate;
+	border-spacing: 40px 0px;
+}
+
+.AD_productEn_info_table2 {
+	margin-top: 20px;
+	border-collapse: separate;
+	border-spacing: 6px 0px;
+}
+
+.AD_productEn_fbutton {
+	height: 28px;
+	width: 80px;
+	background-color: grey;
+	font-size: 14px;
+	font-weight: 400;
+	cursor: pointer;
+	border: 1px solid var(--black-color);
+	text-align: center;
+}
+
+.AD_productEn_info table tr td {
+	font-size: 17px;
+	font-weight: 700;
+	height: 42px;
+	font-family: 'NanumBarunGothic';
+}
+
+.productEn_input {
+	border: 1px solid var(--black-color);
+	width: 400px;
+	height: 28px;
+	background-color: #e2e2e2;
+}
+
+.productEn_input_file {
+	border: 1px solid var(--black-color);
+	width: 400px;
+	height: 28px;
+	background-color: #e2e2e2;
+}
+
+.AD_productEn_div_sbutton {
+	margin-left: 500px;
+	margin-top: 90px;
+}
+
+.AD_productEn_sbutton {
+	width: 120px;
+	height: 40px;
+	font-size: 17px;
+	font-weight: 400;
+	text-align: center;
+	background: grey;
+	border-radius: 10px;
+	font-family: 'NanumBarunGothic';
+	cursor: pointer;
+}
+
+.upload_text {
+	float: left;
+	width: 400px;
+	height: 28px;
+	padding: 0 3px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_upload-btn_wrap input.input_file {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	-ms-filter: "alpha(opacity=0)";
+	-moz-opacity: 0;
+}
+
+.AD_upload-btn_wrap {
+	position: relative;
+	float: left;
+	width: 70px;
+	height: 28px;
+	margin-left: 10px;
+}
+
+.productEn_fbutton {
+	width: 80px;
+	height: 28px;
+	background: grey;
+	text-align: center;
+	color: white;
+	font-family: 'NanumBarunGothic';
+}
+
+.AD_main_returnList {
+	margin-top: 150px;
+}
+
+.AD_returnList_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.AD_returnList_search_img {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.AD_returnList_search_img img {
+	height: 28px;
+	margin-bottom: -8px
+}
+
+.searchbox {
+	width: 400px;
+	height: 28px;
+	margin-bottom: 15px;
+	margin-right: 6px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_returnList_table thead tr {
+	background-color: #969393;
+}
+
+.AD_returnList_table {
+	font-size: 17px;
+	width: 1300px;
+	font-weight: 300;
+}
+
+.AD_returnList_table thead tr th {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 2px solid var(--black-color);
+	border-bottom: 2px solid var(--black-color);
+	line-height: 40px;
+}
+
+.AD_returnList_table tbody tr td {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+	height: 100px;
+	vertical-align: middle;
+}
+
+.AD_returnList_table tbody tr td img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.AD_main_reviewList {
+	margin-top: 150px;
+}
+
+.AD_reviewList_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.AD_reviewList_search_img {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.AD_reviewList_search_img img {
+	height: 28px;
+	margin-bottom: -8px
+}
+
+.searchbox {
+	width: 400px;
+	height: 28px;
+	margin-bottom: 15px;
+	margin-right: 6px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_reviewList_table thead tr {
+	background-color: #969393;
+}
+
+.AD_reviewList_table {
+	font-size: 17px;
+	width: 1300px;
+	font-weight: 300;
+	line-height: 40px;
+}
+
+.AD_reviewList_table thead tr th {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 2px solid var(--black-color);
+	border-bottom: 2px solid var(--black-color);
+}
+
+.AD_reviewList_table tbody tr td {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+}
+
+.reviewList_button_div {
+	text-align: center;
+}
+
+.reviewList_button {
+	width: 72px;
+	height: 28px;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
+	background: grey;
+	border-radius: 5px;
+	font-family: 'NanumBarunGothic';
+	cursor: pointer;
+}
+
+.AD_main_salesList {
+	margin-top: 150px;
+}
+
+.AD_salesList_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.AD_salesList_search_img {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.AD_salesList_search_img img {
+	height: 28px;
+	margin-bottom: -8px
+}
+
+.searchbox {
+	width: 400px;
+	height: 28px;
+	margin-bottom: 15px;
+	margin-right: 6px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_salesList_table thead tr {
+	background-color: #969393;
+}
+
+.AD_salesList_table {
+	font-size: 17px;
+	width: 1300px;
+	font-weight: 300;
+}
+
+.AD_salesList_table thead tr th {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 2px solid var(--black-color);
+	border-bottom: 2px solid var(--black-color);
+	line-height: 40px;
+}
+
+.AD_salesList_table tbody tr td {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+	height: 100px;
+	vertical-align: middle;
+}
+
+.AD_salesList_table tbody tr td img {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.AD_memberlist_title {
+	font-size: 27px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.AD_memberlist_search_img {
+	display: inline-block;
+	float: right;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.searchbox {
+	width: 400px;
+	height: 28px;
+	margin-bottom: 15px;
+	margin-right: 6px;
+	border: 1px solid var(--black-color);
+	background-color: #e2e2e2;
+}
+
+.AD_memberlist_search_img img {
+	height: 28px;
+	margin-bottom: -8px
+}
+
+.AD_main_memberlist {
+	margin-top: 150px;
+}
+
+.AD_memberlist_table thead tr {
+	background-color: #969393;
+}
+
+.AD_memberlist_table {
+	font-size: 17px;
+	width: 1300px;
+	line-height: 35pt;
+	font-weight: 300;
+}
+
+.AD_memberlist_table thead tr th {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 2px solid var(--black-color);
+	border-bottom: 2px solid var(--black-color);
+}
+
+.AD_memberlist_table tbody tr td {
+	text-align: center;
+	font-family: 'NanumBarunGothic';
+	border-top: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+}
+
+.memberlist_button_div {
+	text-align: center;
+}
+
+.memberlist_button {
+	width: 72px;
+	height: 28px;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
+	background: grey;
+	border-radius: 5px;
+	font-family: 'NanumBarunGothic';
+	cursor: pointer;
+}

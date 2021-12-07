@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main-mapper">
+
+	<resultMap type="Play" id="resultPlay">
+		<result property="p_no" column="p_no" />
+		<result property="p_good" column="p_good" />
+		<result property="p_bad" column="max(p_bad)" />
+	</resultMap>
+
+	<resultMap type="Member" id="resultMember">
+		<result property="m_genre" column="m_genre"
+			typeHandler="MyTypeHandler" />
+	</resultMap>
+
+	<select id="reviewTop10" resultType="review">
+		SELECT *
+		FROM (SELECT
+		COUNT(P_NO),P_NO
+		FROM REVIEW
+		GROUP BY P_NO
+		ORDER BY COUNT(P_NO) DESC,
+		P_NO DESC)
+		WHERE ROWNUM &lt;= 10
+	</select>
+
+	<select id="playgb" resultType="play" resultMap="resultPlay">
+		SELECT *
+		FROM
+		(SELECT COUNT(P_NO),P_NO
+		FROM REVIEW
+		GROUP BY P_NO
+		ORDER BY COUNT(P_NO)
+		DESC, P_NO DESC) Q
+		JOIN (SELECT P.P_NO,FLOOR(P_GOOD/DECODE((P_GOOD +
+		P_BAD),0,1,(P_GOOD + P_BAD))*100) "p_good"
+		FROM PLAY P
+		JOIN REVIEW R ON (P.P_NO =
+		R.P_NO)
+		GROUP BY P.P_NO,P_GOOD,P_BAD
+		ORDER BY COUNT(P.P_NO) DESC, P.P_NO
+		DESC) S ON(S.P_NO =Q.P_NO )
+		WHERE
+		ROWNUM &lt;=10
+
+	</select>
+
+	<select id="hotReview" resultType="review">
+		SELECT *
+		FROM (SELECT *
+		FROM
+		REVIEW
+		ORDER BY R_GOOD+R_BAD DESC)
+		WHERE ROWNUM &lt;=3
+	</select>
+
+	<select id="allPlaySelect" resultType="play"
+		resultMap="resultPlay">
+		SELECT P_NO,FLOOR(P_GOOD/DECODE((P_GOOD + P_BAD),0,1,(P_GOOD + P_BAD))*100) "p_good"
+		FROM PLAY
+	</select>
+
+	<select id="memberGenrenmG" parameterType="_int"
+		resultMap="resultMember">
+		SELECT *
+		FROM MEMBER
+		WHERE M_NO = #{ m_no }
+	</select>
+
+	<select id="curationforDuck" resultType="curation">
+		SELECT *
+		FROM CURATION
+		WHERE ROWNUM &lt;=6
+		ORDER BY C_NO DESC
+	</select>
+
+
+	<select id="memberpic" resultType="string">
+		SELECT M_PICRENAMED
+		FROM
+		(SELECT *
+		FROM
+		REVIEW
+		ORDER BY R_GOOD+R_BAD DESC) R
+		JOIN MEMBER M ON
+		(M.M_NO = R.M_NO)
+		WHERE ROWNUM &lt; =3
+	</select>
+
+	<select id="BookMarkC" parameterType="_int"
+		resultType="bookmark">
+		SELECT *
+		FROM BOOKMARK
+		WHERE M_NO = #{m_no}
+	</select>
+
+	<select id="insertBM" parameterType="bookmark">
+		INSERT INTO
+		BOOKMARK VALUES
+		(#{m_no}, #{p_list}, null)
+	</select>
+
+	<select id="deleteBM" parameterType="bookmark">
+		DELETE FROM BOOKMARK
+		WHERE
+		M_NO = #{ m_no } AND P_LIST = #{ p_list }
+	</select>
+
+	<select id="BookMarkCL" parameterType="_int"
+		resultType="bookmark">
+		SELECT *
+		FROM BOOKMARK
+		WHERE M_NO = #{ m_no }
+	</select>
+
+	<select id="CBookMarkIn" parameterType="bookmark">
+		INSERT INTO BOOKMARK
+		VALUES (#{m_no}, null, #{c_list})
+	</select>
+
+	<select id="CBookMarkDe" parameterType="bookmark">
+		DELETE FROM BOOKMARK
+		WHERE M_NO = #{ m_no } AND C_LIST = #{ c_list }
+	</select>
+
+	<select id="curationforDucksel" parameterType="_int"
+		resultType="string">
+		SELECT C_TITLE
+		FROM CURATION
+		WHERE C_NO = #{ parseInt }
+	</select>
+
+	<select id="mainCuButton" parameterType="_int"
+		resultType="mreward">
+		SELECT *
+		FROM REWARD
+		WHERE M_NO = #{m_no}
+
+	</select>
+
+	<select id="reviewCheck" parameterType="review"
+		resultType="_int">
+		SELECT COUNT(*)
+		FROM REVIEW
+		WHERE M_NO = #{m_no} AND
+		P_NO =
+		#{p_no}
+	</select>
+
+</mapper>

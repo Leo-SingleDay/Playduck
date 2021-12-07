@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+html, body, section{
+	position: relative;
+}
+
+section{
+	width: 1000px;
+	text-align: center
+}
+
+.curation_container>img, .cuwrtie_img{
+	width: 1000px;
+	height: 560px;
+	margin-top:50px;
+	margin-bottom: 50px;
+}
+
+.curation_container{
+	text-align: center;
+}
+
+.curation_title{
+	font-size: 24px;
+	font-weight: 700;
+}
+
+#curation_titleArea{
+	width: 600px;
+	height: 35px;
+	color: var(--black-color);
+	margin-left: 20px;
+	margin-bottom:50px;
+}
+
+#summernote{
+	margin-top: 50px;
+}
+
+.curation_writeBtn{
+	  width: 550px;
+    height: 60px;
+    margin-top:50px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    margin-left: 230px;
+    
+}
+
+.curation_title{
+	text-align: center;
+	margin-top: 50px;
+}
+
+.curation_content{
+ width: 800px;
+ margin-top: 50px;
+}
+
+.curation_content>p{
+	line-height: 30px;
+}
+
+.curation_writer{
+	margin-top: 50px;
+	text-align: right;
+	width: 800px;
+}
+
+.cu_modifyBtn, .cu_deleteBtn{
+	width: 150px;
+	height: 40px;
+	font-size:18px;
+	font-weight: 400;
+	background-color: var(--main-color);
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 50px
+}
